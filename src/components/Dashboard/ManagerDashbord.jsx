@@ -3,10 +3,10 @@ import Hedar from './hedar'
 import AddTask from './AddTask'
 import EmployeAssignedTaskList from './EmployeAssignedTaskList'
 
-const ManagerDashbord = () => {
+const ManagerDashbord = ({ handleLogout }) => {
     return (
         <div className='bg-[#101010] h-screen w-screen text-white'>
-            <Hedar />
+            <Hedar handleLogout={handleLogout} />
             <AddTask />
             <EmployeAssignedTaskList />
         </div>

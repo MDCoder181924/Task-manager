@@ -10,31 +10,60 @@ const App = () => {
   const [user, setUser] = useState(null)
   const [loggedInUserData, setLoggedInUserData] = useState(null)
 
+
+  useEffect(() => {
+    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'))
+
+    if (loggedInUser) {
+      setUser(loggedInUser.role)
+
+      if (loggedInUser.role === 'employee' && authData?.employees) {
+        const employee = authData.employees.find(
+          (emp) => emp.email === loggedInUser.email
+        )
+
+        if (employee) {
+          setLoggedInUserData(employee)
+        } else {
+          localStorage.removeItem('loggedInUser')
+          setUser(null)
+          setLoggedInUserData(null)
+        }
+      }
+    }
+  }, [authData])
+
   useEffect(() => {
     setLocalStorage()
   }, [])
-
+  
   const handleLogin = (email, password) => {
-  if (authData?.admin?.email === email && authData?.admin?.password === password) {
-    setUser('admin')
-    localStorage.setItem('loggedInUser', JSON.stringify({role: 'admin' }))
-  } else if (authData) {
-    const employee = authData.employees.find(emp => emp.email === email && emp.password === password)
-    if (employee) {
+    if (authData?.admin?.email === email && authData?.admin?.password === password) {
+      setUser('admin')
+      localStorage.setItem('loggedInUser', JSON.stringify({ role: 'admin' }))
+    } else if (authData ) {
+      const employee = authData.employees.find(emp => emp.email === email && emp.password === password)
+      if (employee) {
       setUser('employee')
       setLoggedInUserData(employee)
-    localStorage.setItem('loggedInUser', JSON.stringify({role: 'employee' }))
-    }
-  } else {
+    localStorage.setItem('loggedInUser', JSON.stringify({ role: 'employee', email }))
+    }else {
     alert('Invalid email or password')
+  } 
   }
 }
+
+  const handleLogout = () => {
+    localStorage.removeItem('loggedInUser')
+    setUser(null)
+    setLoggedInUserData(null)
+  }
 
   return (
     <div>
       {!user && <Login handleLogin={handleLogin} />}
-      {user === 'employee' && <EmployeDashboard Data={loggedInUserData} />}
-      {user === 'admin' && <ManagerDashbord  />}
+      {user === 'employee' && loggedInUserData && <EmployeDashboard Data={loggedInUserData} handleLogout={handleLogout} />}
+      {user === 'admin' && <ManagerDashbord handleLogout={handleLogout} />}
     </div>
   )
 }

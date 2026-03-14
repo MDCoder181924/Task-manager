@@ -1,0 +1,28 @@
+import React from 'react'
+import AcceptTask from './AcceptTask'
+import NewTask from './NewTask'
+import FailedTask from './FailedTask'
+import CompleteTask from './CompleteTask'
+
+const EmployeTakList = ({Data}) => {
+  return (
+    <div  className='mx-10 bg-[#211f1f] flex flex-wrap gap-5 scrollbar-hide px-5 h-120 overflow-y-scroll scrollbar-hide my-10'>
+      {Data?.tasks?.map((elem , idx)=>{
+        if(elem.newTask){
+           return <NewTask key={idx}/>
+        }
+        if(elem.completed){
+          return <CompleteTask key={idx}/>
+        }
+        if(elem.failed){
+          return <FailedTask key={idx}/>
+        }
+        if(elem.active){
+          return <AcceptTask key={idx}/>
+        }
+      })}
+    </div>
+  )
+}
+
+export default EmployeTakList
