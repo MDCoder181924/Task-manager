@@ -58,6 +58,7 @@ const AddTask = () => {
             <div className="">
               <p className='text-[1.2rem] mb-1.2'>Task Title</p>
               <input
+              required
                 value={taskTitle}
                 onChange={(e) =>
                   setTaskTitle(e.target.value)
@@ -69,6 +70,7 @@ const AddTask = () => {
             <div className="">
               <p className='text-[1.2rem] mb-1.2'>Date</p>
               <input
+              required
                 value={taskDate}
                 onChange={(e) =>
                   setTaskDate(e.target.value)
@@ -78,6 +80,7 @@ const AddTask = () => {
             <div className="">
               <p className='text-[1.2rem] mb-1.2'>Assign To</p>
               <input
+              required
                 value={assignTo}
                 onChange={(e) =>
                   setAssignTo(e.target.value)
@@ -87,6 +90,7 @@ const AddTask = () => {
             <div className="">
               <p className='text-[1.2rem] mb-1.2'>Category</p>
               <input
+              required
                 value={category}
                 onChange={(e) =>
                   setCategory(e.target.value)
@@ -98,6 +102,7 @@ const AddTask = () => {
             <div className="h-[80%] w-full">
               <p className='text-[1.2rem] mb-1.2'>Description</p>
               <textarea
+              required
                 value={taskDescription}
                 onChange={(e) =>
                   setTaskDescription(e.target.value)

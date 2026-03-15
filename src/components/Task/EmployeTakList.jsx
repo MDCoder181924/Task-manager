@@ -8,9 +8,6 @@ const EmployeTakList = ({Data}) => {
   return (
     <div  className='mx-10 bg-[#211f1f] flex flex-wrap gap-5 pb-10 scrollbar-hide px-5 h-120 overflow-y-scroll scrollbar-hide my-10'>
       {Data?.tasks?.map((elem , idx)=>{
-        if(elem.newTask){
-           return <NewTask key={idx} task={elem}/>
-        }
         if(elem.completed){
           return <CompleteTask key={idx} task={elem}/>
         }
@@ -19,6 +16,9 @@ const EmployeTakList = ({Data}) => {
         }
         if(elem.active){
           return <AcceptTask key={idx} task={elem}/>
+        }
+        if(elem.newTask){
+           return <NewTask key={idx} task={elem}/>
         }
       })}
     </div>

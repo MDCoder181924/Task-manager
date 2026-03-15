@@ -2,9 +2,9 @@ import React from 'react'
 
 const CompleteTask = ({task}) => {
   return (
-    <div className='w-[23.3%]'>
-        <div className="relative  h-80 rounded-2xl  bg-[#404c82] mt-10">
-        <div className="flex rounded-t-2xl bg-[#2d3b83] justify-between items-center p-2   h-[15%]">
+    <div className='md:w-[23.3%] w-full'>
+        <div className="relative  h-80 rounded-2xl  bg-[#3aa970] mt-10">
+        <div className="flex rounded-t-2xl bg-[#1e804e] justify-between items-center p-2   h-[15%]">
             <h2 className=''>{task.category}</h2>
             <h2>{task.taskDate}</h2>
         </div>

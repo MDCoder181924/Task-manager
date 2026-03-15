@@ -7,7 +7,7 @@ const employees = [
     taskCounts: { active: 2, newTask: 1, completed: 1, failed: 0 },
     tasks: [
       {
-        active: true,
+        active: false,
         newTask: true,
         completed: false,
         failed: false,

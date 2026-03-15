@@ -5,6 +5,7 @@ import ManagerDashbord from './components/Dashboard/ManagerDashbord'
 import { AuthContext } from './context/AuthProvider'
 import { setLocalStorage } from './context/localStorage'
 
+
 const App = () => {
   const { userData: authData } = useContext(AuthContext)
   const [user, setUser] = useState(null)
@@ -35,6 +36,18 @@ const App = () => {
   useEffect(() => {
     setLocalStorage()
   }, [])
+
+  useEffect(() => {
+    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'))
+
+    if (loggedInUser?.role === 'employee' && authData?.employees) {
+      const updatedEmployee = authData.employees.find(
+        (emp) => emp.email === loggedInUser.email
+      )
+
+      setLoggedInUserData(updatedEmployee || null)
+    }
+  }, [authData])
 
   const handleLogin = (email, password) => {
     if (authData?.admin?.email === email && authData?.admin?.password === password) {

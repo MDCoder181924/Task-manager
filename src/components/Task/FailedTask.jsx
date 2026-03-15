@@ -2,9 +2,9 @@ import React from 'react'
 
 const FailedTask = ({task}) => {
   return (
-    <div className='w-[23.3%]'>
-        <div className="relative  h-80 rounded-2xl  bg-[#404c82] mt-10">
-        <div className="flex rounded-t-2xl bg-[#2d3b83] justify-between items-center p-2   h-[15%]">
+    <div className='md:w-[23.3%] w-full'>
+        <div className="relative  h-80 rounded-2xl  bg-[#b13b52] mt-10">
+        <div className="flex rounded-t-2xl bg-[#821a2f] justify-between items-center p-2   h-[15%]">
             <h2 className=''>{task.category}</h2>
             <h2>{task.taskDate}</h2>
         </div>
@@ -13,7 +13,7 @@ const FailedTask = ({task}) => {
             <p className='text-[1.2rem]'>{task.taskDescription}</p>
         </div>
         <div className="absolute bottom-0 flex flex-wrap justify-center  gap-3 p-3 w-full">
-            <button className="bg-[#40914b] text-white flex  px-2 py-1 rounded hover:bg-[#1e872c]">
+            <button className="bg-[#821a2f] text-white flex  px-2 py-1 rounded hover:bg-[#1e872c]">
                 Failed
             </button>
             
